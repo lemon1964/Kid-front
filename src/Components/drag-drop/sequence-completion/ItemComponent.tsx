@@ -1,4 +1,5 @@
 import { useDrag } from "react-dnd";
+import Image from "next/image";
 import { formatFileUrl } from "@/utils/formatFileUrl";
 
 interface ItemComponentProps {
@@ -9,14 +10,14 @@ export default function ItemComponent({ item }: ItemComponentProps) {
   const [{ isDragging }, drag] = useDrag({
     type: "ITEM",
     item: { ...item, targetContainerId: null },
-    collect: (monitor) => ({
+    collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
   return (
     <div
-    ref={(node: HTMLDivElement | null) => {
+      ref={(node: HTMLDivElement | null) => {
         if (node) {
           drag(node);
         }
@@ -25,8 +26,13 @@ export default function ItemComponent({ item }: ItemComponentProps) {
         isDragging ? "opacity-50" : ""
       }`}
     >
-      <img src={formatFileUrl(item.image_url.file_url)} alt={item.alt_text} className="w-20 h-20 object-contain" />
+      <Image
+        src={formatFileUrl(item.image_url.file_url)}
+        alt={item.alt_text}
+        width={80}
+        height={80}
+        className="w-20 h-20 object-contain"
+      />
     </div>
   );
 }
-

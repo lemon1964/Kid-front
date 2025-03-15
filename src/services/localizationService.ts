@@ -1,3 +1,5 @@
+import enTranslations from "../locales/en.json";
+import ruTranslations from "../locales/ru.json";
 import { audioService } from "./audioService";
 
 type Translations = { [key: string]: string };
@@ -10,10 +12,10 @@ class LocalizationService {
     this.loadTranslations();
   }
 
-  private loadTranslations() {
-    this.translations["en"] = require("../locales/en.json");
-    this.translations["ru"] = require("../locales/ru.json");
-  }
+private loadTranslations() {
+  this.translations["en"] = enTranslations;
+  this.translations["ru"] = ruTranslations;
+}
 
   setLanguage(language: string) {
     this.currentLanguage = language;

@@ -1,9 +1,8 @@
-// Типы данных
 interface ObjectType {
     id: number;
     color: string;
     shape: string;
-  };
+  }
   
   // Общий тип для изображений
   interface ImageType {
@@ -23,7 +22,7 @@ interface ObjectType {
       title: string;
       file_url: string;
     };
-  };
+  }
   
   interface QuizQuestionType {
     id: number;
@@ -32,7 +31,7 @@ interface ObjectType {
     question_type: string;
     answers: QuizAnswerType[];
     images: ImageType[];
-  };
+  }
   
   interface QuizDataType {
     id: number;
@@ -52,7 +51,7 @@ interface ObjectType {
       slug: string;
     }[];
     page_background: string;
-  };
+  }
 
   interface QuizPage extends Page {
     quizzes?: QuizDataType[]

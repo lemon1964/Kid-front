@@ -13,19 +13,15 @@ type QuizQuestionProps = {
   onCorrectAnswer: () => void;
 };
 
-export default function QuizQuestion({
-  quizData,
-  onNext,
-  onCorrectAnswer,
-}: QuizQuestionProps) {
+export default function QuizQuestion({ quizData, onNext, onCorrectAnswer }: QuizQuestionProps) {
   const [correctClicks, setCorrectClicks] = useState<Set<number>>(new Set());
   const [clickedImages, setClickedImages] = useState<Set<number>>(new Set());
   const [imageStyles, setImageStyles] = useState<Record<number, string>>({});
 
-  if (!quizData) return <Preloader />;
+  // if (!quizData) return <Preloader />;
 
-  const { answers, visibility_text, text, images } = quizData;
-  const correctAnswersCount = answers.filter((item) => item.is_correct).length;
+  const { answers, visibility_text, text } = quizData;
+  const correctAnswersCount = answers.filter(item => item.is_correct).length;
 
   useEffect(() => {
     setCorrectClicks(new Set());
@@ -34,6 +30,7 @@ export default function QuizQuestion({
   }, [quizData]);
 
   useEffect(() => {
+    // Убедитесь, что логика с задержкой и вызовом playSoundEffect всегда вызывается, но только когда это нужно.
     if (correctClicks.size === correctAnswersCount && correctAnswersCount > 0) {
       const timeout = setTimeout(() => {
         audioService.playSoundEffect("taskCompleted");
@@ -45,28 +42,30 @@ export default function QuizQuestion({
     }
   }, [correctClicks, correctAnswersCount, onCorrectAnswer, onNext]);
 
+  if (!quizData) return <Preloader />;
+
   const handleSelect = (itemId: number | undefined) => {
     if (itemId === undefined || clickedImages.has(itemId)) return;
 
-    const selected = answers.find((item) => item.id === itemId);
+    const selected = answers.find(item => item.id === itemId);
     if (selected) {
-      setClickedImages((prev) => new Set(prev).add(itemId));
+      setClickedImages(prev => new Set(prev).add(itemId));
 
       if (selected.is_correct) {
         audioService.playSoundEffect("correct");
-        setCorrectClicks((prev) => {
+        setCorrectClicks(prev => {
           const updatedSet = new Set(prev);
           updatedSet.add(itemId);
           return updatedSet;
         });
 
-        setImageStyles((prev) => ({
+        setImageStyles(prev => ({
           ...prev,
           [itemId]: "border-green-500",
         }));
       } else {
         audioService.playSoundEffect("incorrect");
-        setImageStyles((prev) => ({
+        setImageStyles(prev => ({
           ...prev,
           [itemId]: "border-red-500",
         }));
@@ -78,7 +77,7 @@ export default function QuizQuestion({
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">{text}</h1>
       <div className="wrapper">
-        {answers.map((item) => (
+        {answers.map(item => (
           <div
             key={item.id}
             className={`answer-item border-2 rounded-lg ${

@@ -59,6 +59,7 @@ const Quiz = ({ quizData }: QuizProps) => {
       />
     )),
     <FinalScreen
+      key="final-screen"
       totalQuestions={totalQuestions}
       correctAnswers={correctAnswers}
       questions={quizData.questions}

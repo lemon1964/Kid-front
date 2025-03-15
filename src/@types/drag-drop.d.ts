@@ -63,4 +63,4 @@ interface TaskData {
 }
 
 // 🔹 Одинаковые типы для всех задач
-interface TaskDataContinue extends TaskData {}
+type TaskDataContinue = TaskData;

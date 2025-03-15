@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import Image from "next/image";
 import { useDrop } from "react-dnd";
 import { formatFileUrl } from "@/utils/formatFileUrl";
 
@@ -13,12 +14,12 @@ export default function Container({ container, onDrop }: ContainerProps) {
     drop: (item: Item) => {
       onDrop(item, container);
     },
-    collect: (monitor) => ({
+    collect: monitor => ({
       isOver: monitor.isOver(),
     }),
   });
 
-    const dropRef = useCallback(
+  const dropRef = useCallback(
     (node: HTMLDivElement | null) => {
       drop(node);
     },
@@ -32,10 +33,12 @@ export default function Container({ container, onDrop }: ContainerProps) {
         isOver ? "border-green-500 bg-green-100" : "border-blue-500"
       }`}
     >
-      <img
+      <Image
         src={formatFileUrl(container.image_url?.file_url)}
         alt={container.alt_text}
-        className="w-24 h-24 object-contain"
+        width={96}
+        height={96}
+        className="object-contain"
       />
     </div>
   );

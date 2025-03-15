@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDrop } from "react-dnd";
 import { formatFileUrl } from "@/utils/formatFileUrl";
-
+import Image from "next/image";
 
 interface ContainerProps {
   container: Container;
@@ -10,7 +10,7 @@ interface ContainerProps {
 }
 
 const Container: React.FC<ContainerProps> = ({ container, index, moveItemToContainer }) => {
-  const [{ isOver }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: "Item",
     drop: (item: { id: number }) => {
       moveItemToContainer(item.id, container.id);
@@ -27,7 +27,15 @@ const Container: React.FC<ContainerProps> = ({ container, index, moveItemToConta
     [drop]
   );
 
-  const rainbowColors = ["#FF0000", "#FFFF00", "#00FF00", "#0000FF", "#FFA500", "#00FFFF", "#800080"];
+  const rainbowColors = [
+    "#FF0000",
+    "#FFFF00",
+    "#00FF00",
+    "#0000FF",
+    "#FFA500",
+    "#00FFFF",
+    "#800080",
+  ];
 
   return (
     <div
@@ -41,18 +49,22 @@ const Container: React.FC<ContainerProps> = ({ container, index, moveItemToConta
         {container.alt_text}
       </h2>
 
-      <img
+      <Image
         src={formatFileUrl(container.image_url?.file_url)}
         alt={container.alt_text}
+        width={500}
+        height={300}
         className="w-full h-auto max-h-[70%] object-contain"
       />
 
       <div className="absolute bottom-2 left-2 flex gap-1">
         {container.items.map(item => (
-          <img
+          <Image
             key={item.id}
             src={formatFileUrl(item.image_url.file_url)}
             alt={item.alt_text}
+            width={24}
+            height={24}
             className="w-6 h-6 rounded-full border border-white"
           />
         ))}

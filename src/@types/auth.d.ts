@@ -1,6 +1,6 @@
-import NextAuth from "next-auth";
-import axios, { InternalAxiosRequestConfig, AxiosHeaders } from "axios";
+import { InternalAxiosRequestConfig } from "axios";
 
+// eslint-disable-line
 export interface AuthAxiosRequestConfig extends InternalAxiosRequestConfig {
   skipAuth?: boolean;
 }
@@ -32,5 +32,5 @@ declare module "next-auth" {
     backendToken?: string | null;
     refreshToken?: string | null;
   }
-  interface User extends NextAuthUser {}
+  type User = NextAuthUser;
 }
