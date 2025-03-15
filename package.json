@@ -1,0 +1,46 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
+    "@rive-app/react-canvas": "^4.17.0",
+    "@svgdotjs/svg.js": "^3.2.4",
+    "axios": "^1.7.7",
+    "gsap": "^3.12.5",
+    "howler": "^2.2.4",
+    "jwt-decode": "^4.0.0",
+    "next": "15.0.3",
+    "next-auth": "^4.24.10",
+    "pixi-svg": "^3.2.0",
+    "pixi.js": "^7.4.2",
+    "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "rive-js": "^0.7.33",
+    "rive-react": "^4.17.3"
+  },
+  "devDependencies": {
+    "@types/gsap": "^3.0.0",
+    "@types/howler": "^2.2.12",
+    "@types/jwt-decode": "^3.1.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

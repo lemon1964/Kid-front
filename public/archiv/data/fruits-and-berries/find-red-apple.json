@@ -1,0 +1,33 @@
+{
+  "questionText": "Find the Red Apple",
+  "answers": [
+    {
+      "id": 1,
+      "text": "Red Apple",
+      "name": "Red apple",
+      "isCorrect": true,
+      "imageUrl": "/image/fruits-and-berries/apple-red.png"
+    },
+    {
+      "id": 2,
+      "text": "Green Apple",
+      "name": "Green apple",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/apple-green.png"
+    },
+    {
+      "id": 3,
+      "text": "Cherry",
+      "name": "Cherry",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/cherry.png"
+    },
+    {
+      "id": 4,
+      "text": "Orange",
+      "name": "Orange",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/orange.png"
+    }
+  ]
+}

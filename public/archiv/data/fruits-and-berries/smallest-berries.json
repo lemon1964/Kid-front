@@ -1,0 +1,33 @@
+{
+  "questionText": "Find the Smallest Berry",
+  "answers": [
+    {
+      "id": 1,
+      "text": "Strawberry",
+      "name": "Strawberry",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/strawberry.png"
+    },
+    {
+      "id": 2,
+      "text": "Raspberry",
+      "name": "Raspberry",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/raspberry.png"
+    },
+    {
+      "id": 3,
+      "text": "Blueberry",
+      "name": "Blueberry",
+      "isCorrect": true,
+      "imageUrl": "/image/fruits-and-berries/blueberry.png"
+    },
+    {
+      "id": 4,
+      "text": "Blackberry",
+      "name": "Blackberry",
+      "isCorrect": false,
+      "imageUrl": "/image/fruits-and-berries/blackberry.png"
+    }
+  ]
+}

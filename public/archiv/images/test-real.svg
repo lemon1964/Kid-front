@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="-200 -200 302 485.11438"
+   width="302"
+   height="485.11438"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="test.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.815"
+     inkscape:cx="150.92025"
+     inkscape:cy="242.33129"
+     inkscape:window-width="1200"
+     inkscape:window-height="678"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1" />
+  <!-- Звезда -->
+  <polygon
+     id="star"
+     points="65,81 0,45 -65,81 -47,15 -95,-31 -29,-31 0,-100 29,-31 95,-31 47,15 "
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none"
+     transform="translate(-49.000007,42.557188)" />
+  <!-- Верхний круг -->
+  <circle
+     id="circle1"
+     cx="-49.000008"
+     cy="-107.44281"
+     r="60"
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none" />
+  <!-- Нижний круг -->
+  <circle
+     id="circle2"
+     cx="-49.000008"
+     cy="192.55719"
+     r="60"
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none" />
+  <!-- Верхний треугольник -->
+  <polygon
+     id="triangle1"
+     points="130,-160 50,-90 70,-240 "
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none"
+     transform="translate(-49.000007,42.557188)" />
+  <!-- Нижний треугольник -->
+  <polygon
+     id="triangle2"
+     points="-130,160 -50,90 -70,240 "
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none"
+     transform="translate(-49.000007,42.557188)" />
+  <!-- Левый квадрат -->
+  <rect
+     id="square1"
+     x="-199"
+     y="-7.4428105"
+     width="60"
+     height="60"
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none" />
+  <!-- Правый квадрат -->
+  <rect
+     id="square2"
+     x="40.999992"
+     y="-7.4428105"
+     width="60"
+     height="60"
+     fill="transparent"
+     stroke="#4a4a4a"
+     stroke-width="2"
+     style="fill:none" />
+</svg>

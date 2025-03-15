@@ -1,0 +1,6 @@
+{
+    "properties": "/data/geography-and-countries/quiz-property.json",
+    "southernCountries": "/data/geography-and-countries/southern-countries.json",
+    "longestRiver": "/data/geography-and-countries/longest-river.json",
+    "smallestCountry": "/data/geography-and-countries/smallest-country.json"
+  }

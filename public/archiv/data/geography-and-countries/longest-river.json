@@ -1,0 +1,27 @@
+{
+    "questionText": "Где самая длинная река?",
+    "visibilityText": true,
+    "answers": [
+      {
+        "id": 1,
+        "text": "Египет",
+        "name": "Egypt",
+        "isCorrect": true,
+        "imageUrl": "/image/geography-and-countries/egypt.png"
+      },
+      {
+        "id": 2,
+        "text": "Бразилия",
+        "name": "Brazil",
+        "isCorrect": false,
+        "imageUrl": "/image/geography-and-countries/brazil.png"
+      },
+      {
+        "id": 3,
+        "text": "США",
+        "name": "USA",
+        "isCorrect": false,
+        "imageUrl": "/image/geography-and-countries/usa.png"
+      }
+    ]
+  }

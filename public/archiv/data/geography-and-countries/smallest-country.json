@@ -1,0 +1,27 @@
+{
+    "questionText": "Какая страна самая маленькая в мире?",
+    "visibilityText": true,
+    "answers": [
+      {
+        "id": 1,
+        "text": "Ватикан",
+        "name": "Vatican",
+        "isCorrect": true,
+        "imageUrl": "/image/geography-and-countries/vatican.jpg"
+      },
+      {
+        "id": 2,
+        "text": "Монако",
+        "name": "Monaco",
+        "isCorrect": false,
+        "imageUrl": "/image/geography-and-countries/monaco.jpg"
+      },
+      {
+        "id": 3,
+        "text": "Лихтенштейн",
+        "name": "Liechtenstein",
+        "isCorrect": false,
+        "imageUrl": "/image/geography-and-countries/liechtenstein.jpg"
+      }
+    ]
+  }

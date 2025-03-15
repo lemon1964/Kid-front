@@ -1,0 +1,6 @@
+{
+    "properties": "/data/fruits-and-berries/quiz-property.json",
+    "findRedApple": "/data/fruits-and-berries/find-red-apple.json",
+    "smallestBerries": "/data/fruits-and-berries/smallest-berries.json"
+  }
+  

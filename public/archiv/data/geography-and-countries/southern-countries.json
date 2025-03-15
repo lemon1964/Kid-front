@@ -1,0 +1,34 @@
+{
+  "questionText": "Какие страны находятся в южном полушарии?",
+  "visibilityText": true,
+  "answers": [
+    {
+      "id": 1,
+      "text": "Россия",
+      "name": "Russia",
+      "isCorrect": false,
+      "imageUrl": "/image/geography-and-countries/russia.jpg"
+    },
+    {
+      "id": 2,
+      "text": "Австралия",
+      "name": "Australia",
+      "isCorrect": true,
+      "imageUrl": "/image/geography-and-countries/australia.jpg"
+    },
+    {
+      "id": 3,
+      "text": "Аргентина",
+      "name": "Argentina",
+      "isCorrect": true,
+      "imageUrl": "/image/geography-and-countries/argentina.jpg"
+    },
+    {
+      "id": 4,
+      "text": "Канада",
+      "name": "Canada",
+      "isCorrect": false,
+      "imageUrl": "/image/geography-and-countries/canada.jpg"
+    }
+  ]
+}
