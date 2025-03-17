@@ -84,7 +84,6 @@ apiClient.interceptors.response.use(
         try {
           const { data } = await axios.post(
             `${baseURL}/api/auth/refresh/`,
-            // "http://localhost:8000/api/auth/refresh/",
             { refresh: session.refreshToken },
             { headers: { "Content-Type": "application/json" } }
           );

@@ -24,7 +24,6 @@ const PaymentPage = () => {
         return;
       }
 
-      // Выбираем правильный путь в зависимости от платежной системы
       const endpoint =
         paymentSystem === "stripe"
           ? paymentType === "forever"
@@ -53,7 +52,7 @@ const PaymentPage = () => {
         window.location.href = response.data.session_url;
       }
     } catch (err) {
-      setError("Что-то пошло не так. Попробуйте снова.");
+      setError("Something went wrong. Try again.");
       setLoading(false);
     }
   };
@@ -83,7 +82,6 @@ const PaymentPage = () => {
         >
           To the main page
         </Link>
-        {/* <h1 className="text-3xl font-bold text-gray-800">Выберите оплату</h1> */}
       </div>
 
       {/* Блок выбора платежной системы */}

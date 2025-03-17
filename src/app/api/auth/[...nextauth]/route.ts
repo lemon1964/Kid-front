@@ -33,7 +33,6 @@ const handler = NextAuth({
         }
 
         try {
-          // const { data } = await apiClient.post("http://127.0.0.1:8000/api/auth/custom/login/", {
             const { data } = await apiClient.post(`${baseURL}/api/auth/custom/login/`, {
             email: credentials.email,
             password: credentials.password,
@@ -68,7 +67,6 @@ const handler = NextAuth({
       if (account?.provider && allowedProviders.includes(account.provider)) {
         try {
           const res = await apiClient.post(
-            // "http://127.0.0.1:8000/api/auth/custom/oauth/register-or-login/",
             `${baseURL}/api/auth/custom/oauth/register-or-login/`,
             {
               id: user.id,
