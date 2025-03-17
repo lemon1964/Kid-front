@@ -89,7 +89,6 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <Notification /> */}
       <h2 className="text-xl font-bold">
         {resetMode ? "Reset Password" : type === "register" ? "Register" : "Login"}
       </h2>
