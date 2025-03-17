@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   env: {
-    NEXTAUTH_URL: "http://localhost:3000", // или ваш домен
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   images: {
-    domains: ['localhost', 'kid-wlsf.onrender.com'], // список разрешенных доменов
+    domains: ['localhost', 'kid-wlsf.onrender.com', 'kid-front.onrender.com'],
   },
   reactStrictMode: false,
 };
 
 export default nextConfig;
+

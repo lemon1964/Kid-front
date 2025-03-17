@@ -34,7 +34,7 @@ jobs:
       - name: Build to Render
         run: npm run build
 
-    #   - name: Trigger Render deployment
-    #     run: |
-    #       curl -X POST "https://api.render.com/v1/services/srv-${{ secrets.RENDER_SERVICE_ID }}/deploys" \
-    #         -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+      - name: Trigger Render deployment
+        run: |
+          curl -X POST "https://api.render.com/v1/services/srv-${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"

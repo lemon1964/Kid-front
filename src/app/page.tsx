@@ -10,7 +10,8 @@ import Link from "next/link";
 import { useRive } from "rive-react";
 import ModalTogglable from "@/Components/ModalTogglable";
 import apiClient from "@/services/authClientService";
-import { prod } from "@/utils/prod"
+import { prod } from "@/utils/prod";
+import Notification from "@/Components/Notification";
 
 interface TogglableHandle {
   toggleVisibility: () => void;
@@ -61,6 +62,7 @@ const Home = () => {
 
   return (
     <div className="p-6 space-y-6">
+      <Notification />
       {/* Верхний блок с языками и подпиской */}
       <div className="flex justify-between items-center">
         {/* Переключатели языков */}

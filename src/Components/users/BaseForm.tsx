@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import apiClient from "@/services/authClientService";
 import { signIn } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { showNotification } from "@/reducers/notificationReducer";
+import { AppDispatch } from "@/store/store";
+import Notification from "@/Components/Notification";
 
 type BaseFormProps = {
   type: "login" | "register";
@@ -9,6 +13,8 @@ type BaseFormProps = {
 };
 
 const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +32,14 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
       try {
         // await axios.post("http://127.0.0.1:8000/api/auth/password/reset/", { email });
         await axios.post(`${baseURL}/api/auth/password/reset/`, { email });
-        alert("Password reset link sent to your email.");
+        // alert("Password reset link sent to your email.");
+        dispatch(
+          showNotification(
+            "Password reset link sent to your email. Please check your email and follow the link to reset your password.",
+            "success",
+            5
+          )
+        );
         setResetMode(false);
       } catch {
         setError("Error sending password reset link.");
@@ -48,7 +61,15 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
           password1: password,
           password2: confirmPassword,
         });
-        alert("Registration successful.");
+        // alert("Registration successful.");
+        dispatch(
+          showNotification(
+            "Registration successful. Please check your email for the confirmation link to activate your account.",
+            "success",
+            5
+          )
+        );
+        console.log("Notification dispatched for registration success!");
       } else {
         const result = await signIn("credentials", { email, password, redirect: false });
         if (result?.error) {
@@ -68,6 +89,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
 
   return (
     <div className="flex flex-col gap-4">
+      {/* <Notification /> */}
       <h2 className="text-xl font-bold">
         {resetMode ? "Reset Password" : type === "register" ? "Register" : "Login"}
       </h2>
@@ -77,7 +99,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
             className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
           />
@@ -89,7 +111,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
                 required
                 className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
               />
@@ -101,7 +123,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
                   <input
                     type="password"
                     value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={e => setConfirmPassword(e.target.value)}
                     required
                     className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
                   />
@@ -111,7 +133,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
                   <input
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={e => setName(e.target.value)}
                     required
                     className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
                   />
@@ -129,10 +151,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
         </button>
       </form>
       {!resetMode && (
-        <button
-          onClick={() => setResetMode(true)}
-          className="text-blue-500 hover:underline"
-        >
+        <button onClick={() => setResetMode(true)} className="text-blue-500 hover:underline">
           Forgot Password?
         </button>
       )}
@@ -142,10 +161,7 @@ const BaseForm: React.FC<BaseFormProps> = ({ type, onClose }) => {
       >
         Login with Google
       </button>
-      <button
-        onClick={onClose}
-        className="text-gray-500 hover:underline"
-      >
+      <button onClick={onClose} className="text-gray-500 hover:underline">
         Close
       </button>
     </div>

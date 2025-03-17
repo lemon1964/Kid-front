@@ -69,7 +69,6 @@ const handler = NextAuth({
         try {
           const res = await apiClient.post(
             // "http://127.0.0.1:8000/api/auth/custom/oauth/register-or-login/",
-            // "http://127.0.0.1:8000/api/auth/custom/oauth/register-or-login/",
             `${baseURL}/api/auth/custom/oauth/register-or-login/`,
             {
               id: user.id,
