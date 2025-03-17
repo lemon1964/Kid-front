@@ -21,7 +21,7 @@ const Image: React.FC<ImageProps> = ({ task }) => {
   const [attempts, setAttempts] = useState(0);
   const [result, setResult] = useState("");
   const [selectedImages, setSelectedImages] = useState<Set<number>>(new Set());
-  const [objectCount, setObjectCount] = useState(4);
+  const [objectCount, setObjectCount] = useState(8);
   const [correctClicks, setCorrectClicks] = useState<Set<number>>(new Set());
   const [images, setImages] = useState<PixiImageType[]>([]);
 
