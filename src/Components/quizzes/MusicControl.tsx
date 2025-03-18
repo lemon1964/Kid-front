@@ -18,7 +18,7 @@ const MusicControl: React.FC<MusicControlProps> = ({ music }) => {
       // Останавливаем музыку при размонтировании компонента
       audioService.stopMusic();
     };
-  }, [music]);
+  }, [music, volume]);
 
   useEffect(() => {
     // Обновляем громкость при изменении state

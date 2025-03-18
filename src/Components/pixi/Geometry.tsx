@@ -36,15 +36,16 @@ const Geometry: React.FC<GeometryProps> = ({ task }) => {
     return () => {
       audioService.stopMusic();
     };
-  }, []);
+  }, [task.music]);
 
   useEffect(() => {
-    const pixi_background = task.pixi_background
+    const pixi_background = task.pixi_background;
     const app = createObjectLayout(canvasRef, objects, handleClick, pixi_background);
     return () => {
       app.destroy(true, true);
     };
-  }, [objects]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [objects, task.pixi_background]);
 
   useEffect(() => {
     const correctCount = objects.filter(obj => obj.is_correct).length;

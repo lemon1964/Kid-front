@@ -15,7 +15,11 @@ interface ImageProps {
   task: PixiTask;
 }
 
-const Image: React.FC<ImageProps> = ({ task }) => {
+interface PixiAppCanvas extends HTMLCanvasElement {
+  __pixiApp?: PIXI.Application;
+}
+
+const ImagePixi: React.FC<ImageProps> = ({ task }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const pixiAppRef = useRef<PIXI.Application | null>(null);
   const [attempts, setAttempts] = useState(0);
@@ -37,7 +41,7 @@ const Image: React.FC<ImageProps> = ({ task }) => {
     return () => {
       audioService.stopMusic();
     };
-  }, []);
+  }, [task.music, task.title]);
 
   useEffect(() => {
     const correctCount = images.filter(img => img.is_correct).length;
@@ -136,7 +140,8 @@ const Image: React.FC<ImageProps> = ({ task }) => {
         pixiAppRef.current = null;
       }
     };
-  }, [images]); // ✅ Следим за task
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images, task.pixi_background, task.pixi_images.length]);
 
   const handleClick = (img: PixiImageType, sprite: PIXI.Sprite, border: PIXI.Graphics) => {
     setAttempts(prev => prev + 1);
@@ -178,7 +183,8 @@ const Image: React.FC<ImageProps> = ({ task }) => {
     if (canvasRef.current) {
       const canvas = canvasRef.current.children[0] as HTMLCanvasElement | undefined;
       if (canvas) {
-        const app = (canvas as any).__pixiApp as PIXI.Application | undefined;
+        const app = (canvas as PixiAppCanvas).__pixiApp;
+        // const app = (canvas as any).__pixiApp as PIXI.Application | undefined;
         if (app) {
           app.stage.removeChildren();
         }
@@ -216,4 +222,4 @@ const Image: React.FC<ImageProps> = ({ task }) => {
   );
 };
 
-export default Image;
+export default ImagePixi;

@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-// import { QuizQuestionType } from "@/types";
 import { formatFileUrl } from "@/utils/formatFileUrl";
-
+import Image from 'next/image';
 
 interface QuizOverviewProps {
   questions: QuizQuestionType[];
@@ -36,7 +35,7 @@ const QuizOverview: React.FC<QuizOverviewProps> = ({ questions }) => {
                     className="flex items-center gap-4 p-2 rounded"
                   >
                     {answer.image_url && (
-                      <img
+                      <Image
                         src={formatFileUrl(answer.image_url.file_url)}
                         alt={answer.image_url.title || "Answer image"}
                         width={50}
@@ -56,22 +55,21 @@ const QuizOverview: React.FC<QuizOverviewProps> = ({ questions }) => {
           </li>
         ))}
       </ul>
-      <style jsx>{`
+
+      <style jsx global>{`
         .answer-image {
-          width: 50px;
-          height: 50px;
           object-fit: cover;
-          border: 3px solid; /* Толщина рамки */
-          border-radius: 5px; /* Скругленные углы */
+          border: 3px solid; /* Border thickness */
+          border-radius: 5px; /* Rounded corners */
         }
         .border-green-500 {
-          border-color: #22c55e; /* Зеленый */
+          border-color: #22c55e; /* Green */
         }
         .border-red-500 {
-          border-color: #ef4444; /* Красный */
+          border-color: #ef4444; /* Red */
         }
         .opacity-70 {
-          opacity: 0.7; /* Полупрозрачность */
+          opacity: 0.7; /* Semi-transparency */
         }
       `}</style>
     </div>

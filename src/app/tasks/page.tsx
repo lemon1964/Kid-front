@@ -8,7 +8,7 @@ import { audioService } from "@/services/audioService";
 import { prod } from "@/utils/prod"
 
 export default function TaskListPage() {
-  const [taskList, setTaskList] = useState<any | null>(null);
+  const [taskList, setTaskList] = useState<TaskDataList | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function TaskListPage() {
         <div>
           <h2 className="text-lg font-semibold">Quizzes</h2>
           <ul className="list-disc pl-5">
-            {taskList.quizzes.map((quiz: any) => (
+            {taskList.quizzes.map((quiz: TaskDataItem) => (
               <li key={quiz.unique_id}>
                 <Link href={`/tasks/${quiz.unique_id}`} className="text-blue-500 hover:underline">
                   {quiz.title}
@@ -57,7 +57,7 @@ export default function TaskListPage() {
         <div>
           <h2 className="text-lg font-semibold">Drag & Drop</h2>
           <ul className="list-disc pl-5">
-            {taskList.dragdrops.map((task: any) => (
+            {taskList.dragdrops.map((task: TaskDataItem) => (
               <li key={task.unique_id}>
                 <Link href={`/tasks/${task.unique_id}`} className="text-green-500 hover:underline">
                   {task.description}
@@ -71,7 +71,7 @@ export default function TaskListPage() {
         <div>
           <h2 className="text-lg font-semibold">Pixi</h2>
           <ul className="list-disc pl-5">
-            {taskList.pixi_tasks.map((task: any) => (
+            {taskList.pixi_tasks.map((task: TaskDataItem) => (
               <li key={task.unique_id}>
                 <Link href={`/tasks/${task.unique_id}`} className="text-orange-500 hover:underline">
                   {task.title}

@@ -51,12 +51,16 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({
 
         setUserName(response.data.name);
         setTotalPoints(response.data.points);
-      } catch (error: any) {
-        if (error.name === "AbortError") {
-          console.log("Request aborted");
+      } 
+      catch (error: unknown) {
+        if (error instanceof Error) {
+          if (error.name === "AbortError") {
+            console.log("Request aborted");
+          } else {
+            console.log("Failed to update points and fetch user data:", error);
+          }
         } else {
-          console.log("Failed to update points and fetch user data:", error);
-          console.log("Let's wait a bit...");
+          console.log("An unexpected error occurred", error);
         }
       }
     },

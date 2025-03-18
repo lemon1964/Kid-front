@@ -39,7 +39,7 @@ const DragDrop: React.FC<DragDropProps> = ({ taskData }) => {
     return () => {
       audioService.stopMusic();
     };
-  }, []);
+  }, [taskData.music.file_url]);
 
   const moveItemToContainer = (itemId: number, containerId: number) => {
     const draggedItem = unassignedItems.find(item => item.id === itemId);

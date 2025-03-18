@@ -30,7 +30,7 @@ const Timer: React.FC<TimerProps> = ({ isQuizFinished, onTimeStop }) => {
       setIsRunning(false);
       onTimeStop(time); // Передаем итоговое время
     }
-  }, [isQuizFinished]);
+  }, [isQuizFinished, onTimeStop, time]);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);

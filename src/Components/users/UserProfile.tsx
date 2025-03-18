@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import apiClient from "@/services/authClientService";
 
 const UserProfile: React.FC = () => {
@@ -12,7 +11,6 @@ const UserProfile: React.FC = () => {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        // const response = await apiClient.get("http://localhost:8000/api/auth/user/");
         const response = await apiClient.get(`${baseURL}/api/auth/user/`);
         setPoints(response.data.points);
       } catch (error) {
@@ -21,7 +19,7 @@ const UserProfile: React.FC = () => {
     };
 
     fetchPoints();
-  }, []);
+  }, [baseURL]);
 
   return (
     <div className="profile-page p-8">

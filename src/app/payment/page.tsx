@@ -51,25 +51,10 @@ const PaymentPage = () => {
       if (response.data.session_url) {
         window.location.href = response.data.session_url;
       }
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Try again.");
       setLoading(false);
     }
-  };
-
-  // Тестовые карты для Stripe и Юкассы
-  const stripeTestCard = {
-    number: "4242424242424242",
-    exp_month: "12",
-    exp_year: "29",
-    cvc: "123",
-  };
-
-  const kassaTestCard = {
-    number: "5555555555554444",
-    exp_month: "12",
-    exp_year: "29",
-    cvc: "123",
   };
 
   return (

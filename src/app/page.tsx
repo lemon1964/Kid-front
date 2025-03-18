@@ -18,7 +18,7 @@ interface TogglableHandle {
 }
 
 const Home = () => {
-  const [language, setLanguage] = useState(localizationService.getCurrentLanguage());
+  const [, setLanguage] = useState(localizationService.getCurrentLanguage());
   const loginRef = useRef<TogglableHandle>(null);
   const registerRef = useRef<TogglableHandle>(null);
   const { data: session } = useSession();
@@ -34,7 +34,7 @@ const Home = () => {
         token: session.refreshToken,
       });
       console.log("Session verified successfully");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log("Session verification failed", error);
     }
   }, [session?.backendToken, session?.refreshToken]);

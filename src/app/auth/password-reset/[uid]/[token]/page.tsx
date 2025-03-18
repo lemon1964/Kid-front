@@ -25,7 +25,6 @@ const PasswordReset = () => {
 
     try {
       await axios.post(
-        // "http://127.0.0.1:8000/api/auth/password/reset/confirm/",
         `${baseURL}/api/auth/password/reset/confirm/`,
         {
           uid: params.uid,
@@ -36,7 +35,8 @@ const PasswordReset = () => {
       );
       setSuccess(true);
       setTimeout(() => router.push("/"), 3000);
-    } catch (err) {
+    } catch {
+    // } catch (err) {
       setError("Invalid token or password requirements not met.");
     }
   };

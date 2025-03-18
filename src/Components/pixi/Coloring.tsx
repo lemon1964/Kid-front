@@ -103,7 +103,7 @@ const Coloring: React.FC<ColoringProps> = ({ task }) => {
       });
 
     return () => appRef.current?.destroy(true, { children: true });
-  }, [task.svg_images]);
+  }, [task.svg_images, task.pixi_background]);
 
   // ✅ Обновляем цвета без ререндера
   useEffect(() => {

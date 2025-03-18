@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import apiClient from "@/services/authClientService";
 import { signIn } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { showNotification } from "@/reducers/notificationReducer";
 import { AppDispatch } from "@/store/store";
-import Notification from "@/Components/Notification";
 
 type BaseFormProps = {
   type: "login" | "register";

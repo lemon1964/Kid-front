@@ -10,7 +10,7 @@ import ClientPixiGame from "@Components/pixi/ClientPixiGame";
 
 export default function TaskPage() {
   const { id } = useParams();
-  const [taskData, setTaskData] = useState<any | null>(null);
+  const [taskData, setTaskData] = useState<TaskDataTask | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,23 +22,30 @@ export default function TaskPage() {
           if (data) {
             setTaskData(data);
           } else {
-            setError("Задача не найдена.");
+            setError("Task not found.");
           }
         })
-        .catch(() => setError("Ошибка при загрузке задачи."))
+        .catch(() => setError("Error loading task."))
         .finally(() => setLoading(false));
     }
   }, [id]);
 
   if (loading) return <Preloader />;
   if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (!taskData) return <p className="text-center text-gray-500">Задача не найдена.</p>;
+  if (!taskData) return <p className="text-center text-gray-500">Task not found.</p>;
 
   return (
+
     <div>
-      {taskData.type === "dragdrop" && <ClientDragDropGame taskData={taskData.data} />}
-      {taskData.type === "quiz" && <Quiz quizData={taskData.data} />}
-      {taskData.type === "pixi" && <ClientPixiGame task={taskData.data} />}
+      {taskData.type === "dragdrop" && (
+        <ClientDragDropGame taskData={taskData.data as TaskData} />
+      )}
+      {taskData.type === "quiz" && (
+        <Quiz quizData={taskData.data as QuizDataType} />
+      )}
+      {taskData.type === "pixi" && (
+        <ClientPixiGame task={taskData.data as PixiTask} />
+      )}
     </div>
   );
 }

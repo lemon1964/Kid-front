@@ -7,7 +7,7 @@ import { fetchTaskBySlug } from "@/services/dragdropService";
 import Preloader from "@/Components/Preloader";
 
 export default function DragDropPage() {
-  const { type, name, task } = useParams();
+  const { name, task } = useParams();
   const [taskData, setTaskData] = useState<TaskDataContinue | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

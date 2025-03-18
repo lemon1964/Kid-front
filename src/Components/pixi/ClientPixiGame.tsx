@@ -2,7 +2,7 @@
 
 import Coloring from "./Coloring";
 import Geometry from "./Geometry";
-import Image from "./Image";
+import ImagePixi from "./ImagePixi";
 
 interface ClientPixiGameProps {
   task: PixiTask;
@@ -15,7 +15,7 @@ const ClientPixiGame: React.FC<ClientPixiGameProps> = ({ task }) => {
     case "geometry":
       return <Geometry task={task} />;
     case "image":
-      return <Image task={task} />;
+      return <ImagePixi task={task} />;
     default:
       return <p>Unknown task type</p>;
   }

@@ -1,21 +1,18 @@
-
 import React, { useState, useEffect } from "react";
 import SuccessScreen from "./SuccessScreen";
 import QuizOverview from "./QuizOverview";
 import ShareButton from "./ShareButton";
 import { calculatePoints } from "./utils";
 import NextQuizzes from "./NextQuizzes";
-// import { QuizQuestionType } from "@types";
-
 
 interface FinalScreenProps {
   totalQuestions: number;
   correctAnswers: number;
   timePerQuestion: number;
   questions: QuizQuestionType[];
-  nextQuizzes: {id: number; title: string; slug: string}[];
+  nextQuizzes: { id: number; title: string; slug: string }[];
   averageTimePerQuestion: number;
-  totalTime: number
+  totalTime: number;
 }
 
 const FinalScreen: React.FC<FinalScreenProps> = ({
@@ -25,7 +22,7 @@ const FinalScreen: React.FC<FinalScreenProps> = ({
   questions,
   nextQuizzes,
   averageTimePerQuestion,
-  totalTime
+  totalTime,
 }) => {
   const [pointsEarned, setPointsEarned] = useState<number | null>(null);
 
@@ -38,11 +35,11 @@ const FinalScreen: React.FC<FinalScreenProps> = ({
     );
 
     const timeoutId = setTimeout(() => {
-      setPointsEarned(finalPoints); // Обновляем значение спустя 500 мс
+      setPointsEarned(finalPoints);
     }, 500);
 
     return () => clearTimeout(timeoutId); // Очищаем таймер при размонтировании
-  }, [totalTime]);
+  }, [totalTime, correctAnswers, averageTimePerQuestion, timePerQuestion, totalQuestions]);
 
   return (
     <div>
@@ -59,4 +56,3 @@ const FinalScreen: React.FC<FinalScreenProps> = ({
 };
 
 export default FinalScreen;
-

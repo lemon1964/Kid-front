@@ -39,7 +39,7 @@ export default function DragDrop2({ taskData }: DragDropProps) {
     return () => {
       audioService.stopMusic();
     };
-  }, []);
+  }, [taskData.music.file_url]);
 
   const handleDrop = (item: Item, targetContainer: Container) => {
     if (
