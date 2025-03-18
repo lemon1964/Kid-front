@@ -56,6 +56,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({
           console.log("Request aborted");
         } else {
           console.log("Failed to update points and fetch user data:", error);
+          console.log("Let's wait a bit...");
         }
       }
     },
