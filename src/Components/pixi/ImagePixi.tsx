@@ -141,7 +141,7 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [images, task.pixi_background, task.pixi_images.length]);
+  }, [images]);
 
   const handleClick = (img: PixiImageType, sprite: PIXI.Sprite, border: PIXI.Graphics) => {
     setAttempts(prev => prev + 1);
