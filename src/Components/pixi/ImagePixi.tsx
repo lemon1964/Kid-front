@@ -91,28 +91,24 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
     images.forEach((img, index) => {
       const texture = PIXI.Texture.from(formatFileUrl(img.image_url));
 
-      // ✅ Дожидаемся загрузки текстуры, чтобы избежать цветного канваса
-      texture.baseTexture.on("loaded", () => {
+      const addSpriteToStage = () => {
         const sprite = new PIXI.Sprite(texture);
         sprite.anchor.set(0.5);
 
-        // ✅ Масштабируем пропорционально
         const maxSize = Math.min(cellWidth, cellHeight) - padding * 2;
         const scaleFactor = maxSize / Math.max(sprite.width, sprite.height);
         sprite.scale.set(scaleFactor);
 
-        // 📍 Вычисляем позицию в сетке
         const col = index % columns;
         const row = Math.floor(index / columns);
         sprite.x = col * cellWidth + cellWidth / 2;
         sprite.y = row * cellHeight + cellHeight / 2;
 
-        // ✅ Рамка (создаём после загрузки и масштабирования)
         const border = new PIXI.Graphics();
         border.lineStyle(6, 0xffffff);
         border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
         border.x = sprite.x;
-        border.y = sprite.y; // ✅ Фикс положения рамки
+        border.y = sprite.y;
 
         sprite.eventMode = "static";
         sprite.cursor = "pointer";
@@ -122,7 +118,6 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
           handleClick(img, sprite, border);
           sprite.eventMode = "none";
 
-          // ✅ Обновляем цвет рамки
           border.clear();
           border.lineStyle(6, img.is_correct ? 0x00ff00 : 0xff0000);
           border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
@@ -130,7 +125,55 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
 
         stage.addChild(border);
         stage.addChild(sprite);
-      });
+      };
+
+      // 🧠 Проверяем, загружена ли текстура
+      if (texture.baseTexture.valid) {
+        addSpriteToStage();
+      } else {
+        texture.baseTexture.once("loaded", addSpriteToStage);
+      }
+
+      // // ✅ Дожидаемся загрузки текстуры, чтобы избежать цветного канваса
+      // texture.baseTexture.on("loaded", () => {
+      //   const sprite = new PIXI.Sprite(texture);
+      //   sprite.anchor.set(0.5);
+
+      //   // ✅ Масштабируем пропорционально
+      //   const maxSize = Math.min(cellWidth, cellHeight) - padding * 2;
+      //   const scaleFactor = maxSize / Math.max(sprite.width, sprite.height);
+      //   sprite.scale.set(scaleFactor);
+
+      //   // 📍 Вычисляем позицию в сетке
+      //   const col = index % columns;
+      //   const row = Math.floor(index / columns);
+      //   sprite.x = col * cellWidth + cellWidth / 2;
+      //   sprite.y = row * cellHeight + cellHeight / 2;
+
+      //   // ✅ Рамка (создаём после загрузки и масштабирования)
+      //   const border = new PIXI.Graphics();
+      //   border.lineStyle(6, 0xffffff);
+      //   border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
+      //   border.x = sprite.x;
+      //   border.y = sprite.y; // ✅ Фикс положения рамки
+
+      //   sprite.eventMode = "static";
+      //   sprite.cursor = "pointer";
+
+      //   sprite.on("pointerdown", () => {
+      //     if (selectedImages.has(img.id)) return;
+      //     handleClick(img, sprite, border);
+      //     sprite.eventMode = "none";
+
+      //     // ✅ Обновляем цвет рамки
+      //     border.clear();
+      //     border.lineStyle(6, img.is_correct ? 0x00ff00 : 0xff0000);
+      //     border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
+      //   });
+
+      //   stage.addChild(border);
+      //   stage.addChild(sprite);
+      // });
     });
 
     return () => {
