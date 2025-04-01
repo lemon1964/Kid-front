@@ -15,10 +15,6 @@ interface ImageProps {
   task: PixiTask;
 }
 
-interface PixiAppCanvas extends HTMLCanvasElement {
-  __pixiApp?: PIXI.Application;
-}
-
 const ImagePixi: React.FC<ImageProps> = ({ task }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const pixiAppRef = useRef<PIXI.Application | null>(null);
@@ -133,47 +129,6 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
       } else {
         texture.baseTexture.once("loaded", addSpriteToStage);
       }
-
-      // // ✅ Дожидаемся загрузки текстуры, чтобы избежать цветного канваса
-      // texture.baseTexture.on("loaded", () => {
-      //   const sprite = new PIXI.Sprite(texture);
-      //   sprite.anchor.set(0.5);
-
-      //   // ✅ Масштабируем пропорционально
-      //   const maxSize = Math.min(cellWidth, cellHeight) - padding * 2;
-      //   const scaleFactor = maxSize / Math.max(sprite.width, sprite.height);
-      //   sprite.scale.set(scaleFactor);
-
-      //   // 📍 Вычисляем позицию в сетке
-      //   const col = index % columns;
-      //   const row = Math.floor(index / columns);
-      //   sprite.x = col * cellWidth + cellWidth / 2;
-      //   sprite.y = row * cellHeight + cellHeight / 2;
-
-      //   // ✅ Рамка (создаём после загрузки и масштабирования)
-      //   const border = new PIXI.Graphics();
-      //   border.lineStyle(6, 0xffffff);
-      //   border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
-      //   border.x = sprite.x;
-      //   border.y = sprite.y; // ✅ Фикс положения рамки
-
-      //   sprite.eventMode = "static";
-      //   sprite.cursor = "pointer";
-
-      //   sprite.on("pointerdown", () => {
-      //     if (selectedImages.has(img.id)) return;
-      //     handleClick(img, sprite, border);
-      //     sprite.eventMode = "none";
-
-      //     // ✅ Обновляем цвет рамки
-      //     border.clear();
-      //     border.lineStyle(6, img.is_correct ? 0x00ff00 : 0xff0000);
-      //     border.drawRect(-sprite.width / 2, -sprite.height / 2, sprite.width, sprite.height);
-      //   });
-
-      //   stage.addChild(border);
-      //   stage.addChild(sprite);
-      // });
     });
 
     return () => {
@@ -233,28 +188,6 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
       audioService.speak(task.title);
     }, 50);
   };
-
-  // const resetGame = () => {
-  //   setAttempts(0);
-  //   setResult("");
-  //   setCorrectClicks(new Set());
-  //   setSelectedImages(new Set()); // ✅ Очистка выбранных картинок
-
-  //   // ✅ Очищаем сцену Pixi.js
-  //   if (canvasRef.current) {
-  //     const canvas = canvasRef.current.children[0] as HTMLCanvasElement | undefined;
-  //     if (canvas) {
-  //       const app = (canvas as PixiAppCanvas).__pixiApp;
-  //       if (app) {
-  //         app.stage.removeChildren();
-  //       }
-  //     }
-  //   }
-
-  //   // ✅ Перерисовываем заново
-  //   setImages(task.pixi_images.slice(0, objectCount));
-  //   audioService.speak(task.title);
-  // };
 
   const handleStart = () => {
     audioService.playSoundEffect("correct");
