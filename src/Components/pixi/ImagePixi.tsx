@@ -41,7 +41,9 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
     return () => {
       audioService.stopMusic();
     };
-  }, [task.music, task.title]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // }, [task.music, task.title]);
 
   useEffect(() => {
     const correctCount = images.filter(img => img.is_correct).length;
