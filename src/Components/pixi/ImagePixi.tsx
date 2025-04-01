@@ -41,9 +41,7 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
     return () => {
       audioService.stopMusic();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // }, [task.music, task.title]);
+  }, [task.music, task.title]);
 
   useEffect(() => {
     const correctCount = images.filter(img => img.is_correct).length;
@@ -142,7 +140,7 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
         pixiAppRef.current = null;
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
   const handleClick = (img: PixiImageType, sprite: PIXI.Sprite, border: PIXI.Graphics) => {
@@ -179,24 +177,41 @@ const ImagePixi: React.FC<ImageProps> = ({ task }) => {
     setAttempts(0);
     setResult("");
     setCorrectClicks(new Set());
-    setSelectedImages(new Set()); // ✅ Очистка выбранных картинок
+    setSelectedImages(new Set());
 
-    // ✅ Очищаем сцену Pixi.js
+    // 🧹 Полностью удаляем содержимое canvasRef
     if (canvasRef.current) {
-      const canvas = canvasRef.current.children[0] as HTMLCanvasElement | undefined;
-      if (canvas) {
-        const app = (canvas as PixiAppCanvas).__pixiApp;
-        // const app = (canvas as any).__pixiApp as PIXI.Application | undefined;
-        if (app) {
-          app.stage.removeChildren();
-        }
-      }
+      canvasRef.current.innerHTML = "";
     }
 
-    // ✅ Перерисовываем заново
-    setImages(task.pixi_images.slice(0, objectCount));
-    audioService.speak(task.title);
+    // ⏳ Делаем задержку перед установкой новых изображений
+    setTimeout(() => {
+      setImages(task.pixi_images.slice(0, objectCount));
+      audioService.speak(task.title);
+    }, 50);
   };
+
+  // const resetGame = () => {
+  //   setAttempts(0);
+  //   setResult("");
+  //   setCorrectClicks(new Set());
+  //   setSelectedImages(new Set()); // ✅ Очистка выбранных картинок
+
+  //   // ✅ Очищаем сцену Pixi.js
+  //   if (canvasRef.current) {
+  //     const canvas = canvasRef.current.children[0] as HTMLCanvasElement | undefined;
+  //     if (canvas) {
+  //       const app = (canvas as PixiAppCanvas).__pixiApp;
+  //       if (app) {
+  //         app.stage.removeChildren();
+  //       }
+  //     }
+  //   }
+
+  //   // ✅ Перерисовываем заново
+  //   setImages(task.pixi_images.slice(0, objectCount));
+  //   audioService.speak(task.title);
+  // };
 
   const handleStart = () => {
     audioService.playSoundEffect("correct");
