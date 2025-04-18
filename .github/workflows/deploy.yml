@@ -17,24 +17,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Install dependencies
+        run: npm install
 
-      # - name: Lint
-      #   # run: npm run lint -- --fix
-      #   run: npm run lint
+      - name: Lint
+        # run: npm run lint -- --fix
+        run: npm run lint
 
-      # - name: Build to Render
-      #   run: npm run build
+      - name: Build to Render
+        run: npm run build
 
-      # - name: Trigger Render deployment
-      #   run: |
-      #     curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
-      #     -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+      - name: Trigger Render deployment
+        run: |
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
 
 
